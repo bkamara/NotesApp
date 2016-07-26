@@ -1,0 +1,32 @@
+html{
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.date{
+	text-align: right;
+}
+
+.material-icons .md-36 { 
+	font-size: 36px; 
+}
+.md-fab{
+	padding-left: 6px;
+	padding-right: 6px;
+	bottom: 0;
+	right: 7;
+	position: fixed;
+	margin-bottom: 15px;
+}
+md-list-item.md-2-line, md-list-item.md-2-line>._md-no-style{
+    min-height: 100px;
+    height: 105px;
+}
+md-toolbar {
+	padding: 0 16px;
+}
+h3{
+	font-weight: 400;
+}
+#addNote, #update, #delete{
+	display: none;
+}

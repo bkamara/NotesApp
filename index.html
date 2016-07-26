@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Notes App</title>
+</head>
+<body ng-app="NotesApp" ng-cloak>
+  <md-toolbar class="md-whiteframe-4dp"><h2 class="md-headline">Notes</h2></md-toolbar>
+  <div ng-controller="NoteListController" flex>
+    <md-content id="noteList">
+      <md-list flex layout="column">
+         <md-list-item class="md-2-line" ng-repeat="item in notes" ng-click="editNote(item)" md-swipe-left="showDeleteAlert($index)">
+          <div class="md-list-item-text" layout="column">  
+            <h3>{{item.title}}</h3>
+            <h4 ng-model="theMax">{{item.note}}</h4>
+            <p class="date">{{item.date}}</p>
+          </div> 
+        </md-list-item>
+      </md-list>  
+    </md-content>
+    <md-content id="addNote" layout-padding>
+      <div>
+        <form id="submitNote"  ng-submit="saveNote(title,note,null)">
+          <md-input-container class="md-block">
+          <label>Title</label>
+          <input ng-model="title" id="title" md-select-on-focus>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Notes</label>
+          <textarea ng-model="note" id="note" rows="5"></textarea>
+        </md-input-container>
+        <md-button id="update" class="md-raised md-primary md-hue-2" ng-click="updateNote()">Update</md-button>
+        <md-button type="submit" id="submit" class="md-raised md-primary">Save</md-button>
+        <md-button id="cancel" class="md-raised md-warn" ng-click="clear()">Cancel</md-button>
+        </form>  
+      </div> 
+    </md-content>
+    <md-button class="md-fab md-whiteframe-6dp" aria-label="Add notes" id="add" ng-click="addNewNote()">
+       <md-tooltip md-direction="left">
+          Add a note
+       </md-tooltip>
+       <i class="material-icons md-36" style="color:#fff">add</i>
+    </md-button>
+  </div>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+ 
+  <!-- ngStorage AngularJS module -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+ 
+  <!-- jQuery Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  <script src="js/notes.js"></script>
+</body>
+</html>
